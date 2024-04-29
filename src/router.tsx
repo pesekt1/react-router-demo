@@ -6,6 +6,8 @@ import UserDetailPage from "./routing/UserDetailPage";
 import Layout from "./routing/Layout";
 import UsersPage from "./routing/UsersPage";
 import ErrorPage from "./routing/ErrorPage";
+import LoginPage from "./routing/LoginPage";
+import PrivateRouters from "./routing/PrivateRouters";
 
 const router = createBrowserRouter([
   {
@@ -14,12 +16,18 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "", element: <HomePage /> },
+      { path: "/contacts", element: <ContactPage /> },
+      { path: "/login", element: <LoginPage /> },
+    ],
+  },
+  {
+    element: <PrivateRouters />,
+    children: [
       {
         path: "/users",
         element: <UsersPage />,
         children: [{ path: ":id", element: <UserDetailPage /> }],
       },
-      { path: "/contacts", element: <ContactPage /> },
     ],
   },
 ]);
